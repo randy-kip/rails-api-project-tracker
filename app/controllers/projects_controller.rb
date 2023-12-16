@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  http_basic_authenticate_with name: "racks", password: "hunnid"
   before_action :set_project, only: %i[ show edit update destroy ]
 
   # GET /projects or /projects.json
