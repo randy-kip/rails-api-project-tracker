@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Milestone.delete_all
+Project.delete_all
+
+
+projects = Project.create!([{title: 'Hello world application', created_by: 'Nitin'},  {title: 'Rails web app', created_by: 'Nitin'}, {title: 'Rails API project', created_by: 'Nitin'}])
+
+projects.each do |project|
+    Milestone.create!(title: 'Set up dependencies',  done: false, project: project)
+end
+
+puts 'Data Seeded.'
