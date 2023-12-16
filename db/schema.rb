@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_16_093720) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_16_112611) do
+  create_table "milestones", force: :cascade do |t|
+    t.string "title"
+    t.boolean "done"
+    t.integer "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_milestones_on_project_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.string "created_by"
@@ -20,4 +29,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_16_093720) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "milestones", "projects"
 end
