@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_16_140610) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_17_090138) do
   create_table "milestones", force: :cascade do |t|
     t.string "title"
     t.boolean "done"
@@ -22,7 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_16_140610) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
-    t.string "created_by"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at", null: false
