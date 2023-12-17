@@ -9,11 +9,12 @@
 Milestone.delete_all
 Project.delete_all
 
-
+u1 = User.create!(name: "nitin", email: "n.pol.ku", password: "123")
 projects = Project.create!([{title: 'Hello world application', created_by: 'Nitin'},  {title: 'Rails web app', created_by: 'Nitin'}, {title: 'Rails API project', created_by: 'Nitin'}])
 
 projects.each do |project|
     Milestone.create!(title: 'Set up dependencies',  done: false, project: project)
 end
+
 
 puts 'Data Seeded.'
