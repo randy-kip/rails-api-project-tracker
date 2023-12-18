@@ -8,13 +8,20 @@
 
 Milestone.delete_all
 Project.delete_all
+User.delete_all
 
-u1 = User.create!(name: "nitin", email: "n.pol.ku", password: "123")
-projects = Project.create!([{title: 'Hello world application', created_by: 'Nitin'},  {title: 'Rails web app', created_by: 'Nitin'}, {title: 'Rails API project', created_by: 'Nitin'}])
+u1 = User.create(name: "nitin", email: "n.pol.ku", password: "123")
 
-projects.each do |project|
-    Milestone.create!(title: 'Set up dependencies',  done: false, project: project)
-end
+projects_data = [
+  { title: 'Hello world application', created_by: 1, start_date: Date.today, end_date: Date.today + 7.days, created_by: u1.id },
+  { title: 'Rails web app', created_by: 1, start_date: Date.today + 2.days, end_date: Date.today + 10.days, created_by: u1.id },
+  { title: 'Rails API project', created_by: 1, start_date: Date.today, end_date: Date.today + 5.days, created_by: u1.id }
+]
+
+projects = Project.create(projects_data)
 
 
+m1 = Milestone.create(title: 'Dependencies set up', done: false, project_id: projects[0].id)
+m2 = Milestone.create(title: 'Implement feature X', done: true, project_id: projects[1].id)
+m3 = Milestone.create(title: 'Write tests', done: false, project_id: projects[2].id)
 puts 'Data Seeded.'

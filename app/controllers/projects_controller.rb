@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
       @projects = current_user.projects
       respond_to do |format|
         format.html 
-        format.json { render json: @projects.to_json(include: :milestones) }
+        format.json { render json: @projects }
       end
     end
 
