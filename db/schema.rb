@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_17_091815) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_18_113553) do
   create_table "milestones", force: :cascade do |t|
     t.string "title"
     t.boolean "done"
@@ -38,6 +38,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_17_091815) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "viewers", force: :cascade do |t|
+    t.string "name"
+    t.integer "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_viewers_on_project_id"
+  end
+
   add_foreign_key "milestones", "projects"
   add_foreign_key "projects", "users", column: "created_by"
+  add_foreign_key "viewers", "projects"
 end

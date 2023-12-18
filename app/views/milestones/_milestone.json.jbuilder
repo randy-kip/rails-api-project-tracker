@@ -1,2 +1,3 @@
-json.extract! milestone, :id, :title, :done, :project_id, :created_at, :updated_at
-json.url milestone_url(milestone, format: :json)
+json.title milestone.title
+json.done milestone.done
+json.created_at milestone.created_at.to_time.to_i
